@@ -27,9 +27,32 @@ import NavItems from './headerComponents/NavItems.vue'
     .header__inner {
         max-width: 1440px;
         margin: 0 auto;
+        padding: 20px 180px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header__left {
+        display: flex;
+        align-items: center;
+        gap: 60px;
     }
 
     .header__shut {
         width: 124px;
+    }
+
+    .header__right {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .header__profile {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: #2E363E;
+        text-decoration: none;
     }
 </style>

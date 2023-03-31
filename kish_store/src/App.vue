@@ -1,6 +1,6 @@
 <script setup>
-  import Header from './components/header/header.vue';
-  import AmimationShut from './components/preloader/AmimationShut.vue';
+  import AmimationShut from './components/preloader/AmimationShut.vue';  
+  import Header from './components/header/HeaderStore.vue'
 </script>
 
 <template>

@@ -6,22 +6,39 @@
                 <p class="descr__title">{{ name }}</p>
                 <p class="descr__price">{{ price }}</p>
             </div>
-            <catalogBtn />
+            <orderBtn 
+            :info="info"
+            @click="getInfo"
+            />
         </div>
     </div>
 </template>
 
 <script>
-    import catalogBtn from './catalogBtn.vue';
+    import orderBtn from '../../orderBtn.vue';
     export default {
         components: {
-            catalogBtn
+            orderBtn
         },
         props: [
             'img',
             'name',
             'price'
-        ]
+        ],
+        data() {
+            return {
+                info: {}
+            }
+        },
+        methods: {
+            getInfo() {
+                this.info = {
+                    img: 'catalog/catalog-main.jpg',
+                    name: this.name,
+                    price: this.price
+                }
+            }
+        }
     }
 </script>
 

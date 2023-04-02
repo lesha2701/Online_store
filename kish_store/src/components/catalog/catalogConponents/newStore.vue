@@ -4,23 +4,40 @@
         <div class="new__title-descr">
             <p class="new__title-descr--title">{{ name }}</p>
             <p class="new__title-descr--price">{{ price }}</p>
-            <catalogBtn />
+            <orderBtn 
+            :info="info"
+            @click="getInfo"
+            />
         </div>
     </div>
 </template>
 
 <script>
-    import catalogBtn from './catalogBtn.vue'
+    import orderBtn from '../../orderBtn.vue'
 
     export default {
         components: {
-            catalogBtn
+            orderBtn
         },
         props: [
             'img',
             'name',
             'price'
-        ]
+        ],
+        data() {
+            return {
+                info: {}
+            }
+        },
+        methods: {
+            getInfo() {
+                this.info = {
+                    img: 'catalog/catalog-main.jpg',
+                    name: this.name,
+                    price: this.price
+                }
+            }
+        }
     }
 </script>
 

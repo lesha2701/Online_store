@@ -3,16 +3,27 @@
         <img class="hit__block-img" src="catalog/catalog-main.jpg" alt="">
         <div class="hit__block-info">
             <div class="hit__block-info--descr">
-                <p class="descr__title">Футболка Misfits</p>
-                <p class="descr__price">2 300 руб.</p>
+                <p class="descr__title">{{ title }}</p>
+                <p class="descr__price">{{ price }}</p>
             </div>
             <catalogBtn />
         </div>
     </div>
 </template>
 
-<script setup>
-import catalogBtn from './catalogBtn.vue';
+<script>
+    import catalogBtn from './catalogBtn.vue';
+    export default {
+        components: {
+            catalogBtn
+        },
+        data() {
+            return {
+                title: 'Футболка Misfits',
+                price: '2 300 руб.',
+            }
+        }
+    }
 </script>
 
 <style>

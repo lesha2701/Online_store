@@ -13,9 +13,17 @@
     </header>
 </template>
 
-<script setup>
+<script>
 import FindForm from './headerComponents/FindForm.vue';
-import NavItems from './headerComponents/NavItems.vue'
+import NavItems from './headerComponents/NavItems.vue';
+
+export default {
+    components: {
+        FindForm,
+        NavItems
+    }
+
+}
 </script>
 
 <style>

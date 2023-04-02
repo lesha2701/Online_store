@@ -1,16 +1,27 @@
 <template>
     <div class="new__block">
-        <img class="new__block-img" src="catalog/catalog-new.png" alt="">
+        <img class="new__block-img" :src="img" alt="">
         <div class="new__title-descr">
-            <p class="new__title-descr--title">Легендарная кофта Князя</p>
-            <p class="new__title-descr--price">3 499 руб.</p>
+            <p class="new__title-descr--title">{{ name }}</p>
+            <p class="new__title-descr--price">{{ price }}</p>
             <catalogBtn />
         </div>
     </div>
 </template>
 
-<script setup>
+<script>
     import catalogBtn from './catalogBtn.vue'
+
+    export default {
+        components: {
+            catalogBtn
+        },
+        props: [
+            'img',
+            'name',
+            'price'
+        ]
+    }
 </script>
 
 <style>

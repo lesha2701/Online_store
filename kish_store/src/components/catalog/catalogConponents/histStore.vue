@@ -1,9 +1,9 @@
 <template>
     <div class="hit__block">
-        <img class="hit__block-img" src="catalog/catalog-main.jpg" alt="">
+        <img class="hit__block-img" :src="img" alt="">
         <div class="hit__block-info">
             <div class="hit__block-info--descr">
-                <p class="descr__title">{{ title }}</p>
+                <p class="descr__title">{{ name }}</p>
                 <p class="descr__price">{{ price }}</p>
             </div>
             <catalogBtn />
@@ -17,12 +17,11 @@
         components: {
             catalogBtn
         },
-        data() {
-            return {
-                title: 'Футболка Misfits',
-                price: '2 300 руб.',
-            }
-        }
+        props: [
+            'img',
+            'name',
+            'price'
+        ]
     }
 </script>
 

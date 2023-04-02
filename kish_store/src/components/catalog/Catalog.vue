@@ -4,15 +4,23 @@
         <div class="catalog__inner">
             <div class="catalog__left">
                 <p class="catalog__left-title">Хит продаж</p>
-                <HistStore />
+                <HistStore 
+                :img="imgHit"
+                :name="nameHit"
+                :price="priceHit"
+                />
             </div>
             <div class="catalog__right">
                 <p class="catalog__right-title">Новые поступления</p>
-                <div class="catalog__right-product">
-                    <newStore />
-                    <newStore />
-                    <newStore />
-                </div>
+                <ul class="catalog__right-product">
+                    <li v-for="item in items" :key="item.id">
+                        <newStore 
+                        :img="item.img"
+                        :name="item.name"
+                        :price="item.price"
+                        />
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="catalog__all-block">
@@ -21,9 +29,44 @@
     </section>
 </template>
 
-<script setup>
-import HistStore from './catalogConponents/histStore.vue';
-import newStore from './catalogConponents/newStore.vue';
+<script>
+    import HistStore from './catalogConponents/histStore.vue';
+    import newStore from './catalogConponents/newStore.vue';
+
+    export default {
+        components: {
+            HistStore,
+            newStore
+        },
+        data() {
+            return {
+                items: [
+                    {
+                        id: 0,
+                        img: 'catalog/catalog-new.png',
+                        name: 'Легендарная кофта Князя1',
+                        price: '3 499 руб.'
+                    },
+                    {
+                        id: 1,
+                        img: 'catalog/catalog-new.png',
+                        name: 'Легендарная кофта Князя2',
+                        price: '3 699 руб.'                 
+                    },
+                    {
+                        id: 2,
+                        img: 'catalog/catalog-new.png',
+                        name: 'Легендарная кофта Князя3',
+                        price: '2 699 руб.'       
+                    }
+                ],
+
+                imgHit: 'catalog/catalog-main.jpg',
+                nameHit: 'Футболка Misfits',
+                priceHit: '2 199 руб.'
+            }
+        }
+    }
 </script>
 <style>
 
@@ -86,6 +129,7 @@ import newStore from './catalogConponents/newStore.vue';
         display: flex;
         flex-direction: column;
         gap: 30px;
+        list-style: none;
     }
 
     .catalog__all-block {

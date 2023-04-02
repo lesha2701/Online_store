@@ -7,7 +7,6 @@
             </div>
             <div class="header__right">
                 <a href="#" class="header__profile">Профиль</a>
-                <FindForm />
             </div>
         </div>
     </header>

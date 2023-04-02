@@ -2,11 +2,16 @@
     <section class="reviews">
         <div class="reviews__inner">
             <h2 class="reviews__title">Отзывы</h2>
-            <div class="reviews__list">
-                <Review />
-                <Review />
-                <Review />
-            </div>
+            <ul class="reviews__list">
+                <li v-for="item in items" :key="item.id">
+                    <Review
+                    :name="item.name"
+                    :product="item.product"
+                    :date="item.date"
+                    :reviewText="item.reviewText"   
+                    />
+                </li>
+            </ul>
             <div class="review__all-block">
                 <a href="#" class="review__all">Читать все отзывы</a>
             </div>
@@ -14,8 +19,41 @@
     </section>
 </template>
 
-<script setup>
-import Review from './rewiewsComponents/review.vue';
+<script>
+    import Review from './rewiewsComponents/review.vue';
+
+    export default {
+        components: {
+            Review
+        },
+        data() {
+            return {
+                items: [
+                    {
+                        id: 0,
+                        name: 'Антон Курпатов',
+                        product: 'Футболка Misfits',
+                        date: '24.01.2023',
+                        reviewText: 'Товар пришел точно в срок! Отличное соотношение цены и качества'
+                    },
+                    {
+                        id: 1,
+                        name: 'Андрей Кузнецов',
+                        product: 'Браслет',
+                        date: '21.01.2023',
+                        reviewText: 'Отличное соотношение цены и качества. Товар пришел точно в срок!'
+                    },
+                    {
+                        id: 2,
+                        name: 'Никита Федоров',
+                        product: 'Футболка Misfits',
+                        date: '01.02.2023',
+                        reviewText: 'Товар пришел точно в срок! Отличное соотношение цены и качества'
+                    }
+                ]
+            }
+        }
+    }
 </script>
 
 <style>
@@ -39,6 +77,7 @@ import Review from './rewiewsComponents/review.vue';
     .reviews__list {
         display: flex;
         gap: 46px;
+        list-style: none;
     }
 
     .review__all-block {

@@ -1,19 +1,24 @@
 <template>
     <div class="review">
         <div class="review__top">
-            <div class="review__name">Алексей Петров</div>
-            <div class="review__product">Товар: Футболка Misfits</div>
-            <div class="review__date">24.01.2023</div>
+            <div class="review__name">{{ name }}</div>
+            <div class="review__product">Товар: {{ product }}</div>
+            <div class="review__date">{{ date }}</div>
         </div>
         <div class="review__bottom">
-            <p class="review__text">Товар пришел точно в срок! Отличное соотношение цены и качества</p>
+            <p class="review__text">{{ reviewText }}</p>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+    props: [
+        'name',
+        'product',
+        'date',
+        'reviewText'
+    ]
 }
 </script>
 

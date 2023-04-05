@@ -67,21 +67,26 @@ export default {
         position: relative;
     }
 
+    .preloader__shut {
+        position: relative;
+        top: 20px
+    }
+
     .hands {
         display: flex;
         gap: 282px;
         position: relative;
-        top: -80px;
+        top: -60px;
     }
 
     .preloader__l-hand {
         position: relative;
-        top: -25px;
+        top: -15px;
     }
 
     .preloader__ksh {
         max-width: 735px;
         position: relative;
-        top: -70px;
+        top: -50px;
     }
 </style>

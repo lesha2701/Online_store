@@ -27,6 +27,5 @@ export default {
     .modal {
         position: absolute;
         z-index: 100;
-        
     }
 </style>

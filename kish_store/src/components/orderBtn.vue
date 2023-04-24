@@ -1,6 +1,6 @@
 <template>
     <div class="hit__block-info--btn">
-        <a href="#" class="order" @click.prevent="openModal">Заказать</a>
+        <a href="#" class="order" @click.prevent="addProductInCarts">Заказать</a>
         <modalOrder v-if="isModalOpen" @close="closeModal"
         :img="info.img"
         :name="info.name"
@@ -22,9 +22,9 @@
             }
         },
         methods: {
-            openModal(e) {
+            addProductInCarts(e) {
                 e.preventDefault()
-                this.isModalOpen = true
+                
             },
             closeModal() {
                 this.isModalOpen = false

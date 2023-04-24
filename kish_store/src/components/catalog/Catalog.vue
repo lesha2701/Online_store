@@ -1,6 +1,9 @@
 <template>
     <section class="catalog">
-        <p class="catalog__title">Каталог</p>
+        <div class="catalog__title-block">
+            <p class="catalog__title">Каталог</p>
+            <img src="/shopping_cart_icon_245998.svg" alt="">
+        </div>
         <div class="catalog__inner">
             <div class="catalog__left">
                 <p class="catalog__left-title">Хит продаж</p>
@@ -74,9 +77,14 @@
         margin-bottom: 160px;
     }
 
-    .catalog__title {
+    .catalog__title-block {
         background-color: #F8B101;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .catalog__title {
         font-weight: 700;
         font-size: 26px;
         line-height: 150%;

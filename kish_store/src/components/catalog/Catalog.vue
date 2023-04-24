@@ -7,7 +7,7 @@
         <div class="modalBlock">
             <modalStore 
             v-if="showModal"
-            :carts="cartsItems"
+            :todos="todos"
             />
         </div>
         <div class="catalog__inner">
@@ -48,8 +48,12 @@
     import HistStore from './catalogConponents/histStore.vue';
     import newStore from './catalogConponents/newStore.vue';
     import modalStore from '../modalStore.vue';
-    import {ref} from 'vue';
+    // import {ref} from 'vue';
     import { useStorage } from '@vueuse/core';
+
+    const todos = useStorage('cartsShop', []);
+    const counter = useStorage('counter', 0)
+
 
     export default {
         components: {
@@ -88,27 +92,37 @@
                     }
                 ],
                 cartsItems: [],
-                idCartsHits: 0,
-                idCartsNew: 0,
+                idCarts: 0,
                 showModal: false
             }
+        },
+        setup() {
+            const todos = useStorage('todos', []);
+
+            return {
+                todos,
+            };
         },
         methods: {
             receiveDataFromChildHits(id) {
                 this.itemsHit.forEach(element => {
                     if (element.id == id) {
-                        const cartItem = {id: this.idCartsHits, img:element.img, name:element.name, price:element.price}
-                        this.cartsItems.push(cartItem);
-                        this.idCartsHits += 1;
+                        todos.value.push({id: counter.value, img:element.img, name:element.name, price:element.price})
+                        // const cartItem = {id: this.idCartsHits, img:element.img, name:element.name, price:element.price}
+                        console.log("🚀 ~ file: Catalog.vue:103 ~ receiveDataFromChildHits ~ todos:", todos.value)
+                        // this.cartsItems.push(cartItem);
+                        counter.value += 1;
                     }
                 })
             },
             receiveDataFromChildNew(id) {
                 this.itemsNew.forEach(element => {
                     if (element.id == id) {
-                        const cartItem = {id: this.idCartsNew, img:element.img, name:element.name, price:element.price}
-                        this.cartsItems.push(cartItem);
-                        this.idCartsNew += 1;
+                        todos.value.push({id: counter.value, img:element.img, name:element.name, price:element.price})
+                        // const cartItem = {id: this.idCartsNew, img:element.img, name:element.name, price:element.price}
+                        console.log("🚀 ~ file: Catalog.vue:114 ~ receiveDataFromChildNew ~ todos:", todos.value)
+                        // this.cartsItems.push(cartItem);
+                        counter.value += 1;
                         
                     }
                 })
@@ -122,25 +136,6 @@
                 }
             }
         },
-        setup() {
-            const items = ref([])
-            const storage = useStorage(localStorage)
-
-            const addItemInCarts = (id, img, name, price) => {
-                const newItem = {id: id, img: img, name: name, price: price}
-                items.value.push(newItem)
-                storage.set('items', items.value)
-            }
-
-            if (storage.get('items')) {
-                items.value = storage.get('items')
-            }
-
-            return {
-                items,
-                addItemInCarts
-            }
-        }
     }
 </script>
 <style>

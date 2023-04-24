@@ -21,19 +21,9 @@
             'name',
             'price'
         ],
-        data() {
-            return {
-                item: {
-                    id: this.id,
-                    img: this.img,
-                    name: this.name,
-                    price: this.price
-                }
-            }
-        },
         methods: {
             addProductInCarts() {
-                this.$emit('send-data-to-parent-hits', this.item)
+                this.$emit('send-data-to-parent-hits', this.id)
             }
         }
     }

@@ -3,11 +3,11 @@
         <div class="model__title">
             <h2>Корзина</h2>
         </div>
-        <div v-for="item in carts" :key="item.id" class="modal">
-            <img class="modal__item-img" :src="item.img" alt="">
+        <div v-for="todo in todos" :key="todo.id" class="modal">
+            <img class="modal__item-img" :src="todo.img" alt="">
             <div class="modal__item-text">
-                <p>{{ item.name }}</p>
-                <p>{{ item.price}}</p>
+                <p>{{ todo.name }}</p>
+                <p>{{ todo.price}}</p>
             </div>
         </div>
         <a class="order" href="">Заказать</a>
@@ -15,7 +15,13 @@
 </template>
 <script>
 export default {
-    props: ['carts']
+    props: {
+        todos: {
+            type: Array,
+            required: true,
+        }
+        
+    },
 }
 </script>
 <style>

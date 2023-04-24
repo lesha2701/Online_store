@@ -3,6 +3,7 @@
         <div class="catalog__title-block">
             <p class="catalog__title">Каталог</p>
             <img @click="showModalWindow" src="/shopping_cart_icon_245998.svg" alt="">
+            <!-- <a href="#" @click="popCarts">Удалить</a> -->
         </div>
         <div class="modalBlock">
             <modalStore 
@@ -97,7 +98,7 @@
             }
         },
         setup() {
-            const todos = useStorage('todos', []);
+            const todos = useStorage('cartsShop', []);
 
             return {
                 todos,
@@ -108,9 +109,7 @@
                 this.itemsHit.forEach(element => {
                     if (element.id == id) {
                         todos.value.push({id: counter.value, img:element.img, name:element.name, price:element.price})
-                        // const cartItem = {id: this.idCartsHits, img:element.img, name:element.name, price:element.price}
                         console.log("🚀 ~ file: Catalog.vue:103 ~ receiveDataFromChildHits ~ todos:", todos.value)
-                        // this.cartsItems.push(cartItem);
                         counter.value += 1;
                     }
                 })
@@ -119,9 +118,7 @@
                 this.itemsNew.forEach(element => {
                     if (element.id == id) {
                         todos.value.push({id: counter.value, img:element.img, name:element.name, price:element.price})
-                        // const cartItem = {id: this.idCartsNew, img:element.img, name:element.name, price:element.price}
                         console.log("🚀 ~ file: Catalog.vue:114 ~ receiveDataFromChildNew ~ todos:", todos.value)
-                        // this.cartsItems.push(cartItem);
                         counter.value += 1;
                         
                     }
@@ -134,7 +131,7 @@
                 } else {
                     this.showModal = true
                 }
-            }
+            },
         },
     }
 </script>

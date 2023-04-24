@@ -4,38 +4,25 @@
         <div class="new__title-descr">
             <p class="new__title-descr--title">{{ name }}</p>
             <p class="new__title-descr--price">{{ price }}</p>
-            <orderBtn 
-            :info="info"
-            @click="getInfo"
-            />
+            <div class="hit__block-info--btn">
+                <a href="#" class="order" @click.prevent="addProductInCarts">Купить</a>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import orderBtn from '../../orderBtn.vue'
 
     export default {
-        components: {
-            orderBtn
-        },
         props: [
+            'id',
             'img',
             'name',
             'price'
         ],
-        data() {
-            return {
-                info: {}
-            }
-        },
         methods: {
-            getInfo() {
-                this.info = {
-                    img: 'catalog/catalog-main.jpg',
-                    name: this.name,
-                    price: this.price
-                }
+            addProductInCarts() {
+                this.$emit('send-data-to-parent-new', this.id)
             }
         }
     }

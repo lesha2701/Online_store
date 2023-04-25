@@ -9,6 +9,7 @@
                 <p>{{ todo.name }}</p>
                 <p>{{ todo.price}}</p>
             </div>
+            <a class="modal__delete" href="#">Удалить</a>
         </div>
         <a class="order" href="">Заказать</a>
     </div>
@@ -43,6 +44,10 @@ export default {
         align-items: center;
         gap: 20px;
         position: relative;
+    }
+
+    .modal__delete {
+        margin-left: auto;
     }
 
     .modal__item-img {

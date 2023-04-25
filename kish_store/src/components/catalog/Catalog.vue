@@ -27,7 +27,7 @@
             <div class="catalog__right">
                 <p class="catalog__right-title">Новые поступления</p>
                 <ul class="catalog__right-product">
-                    <li v-for="item in itemsNew" :key="item.id">
+                    <li v-for="item in itemsNew" @click="deleteItemCarts(item.id)" :key="item.id">
                         <newStore 
                         :id="item.id"
                         :img="item.img"
